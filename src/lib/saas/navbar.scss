@@ -1,0 +1,140 @@
+// imports
+
+@use "@sha3dev/styles" as sha3;
+
+// vars
+
+$baseTransitionTime: 0.25s;
+$burgerColor: var(--solid-saas-navbar__burgerColor, #000);
+$burgerSize: var(--solid-saas-navbar__burgerSize, 16px);
+$burgerLineHeight: var(--solid-saas-navbar__burgerLineHeight, 2px);
+$burgerPadding: calc((#{$burgerSize} - (#{$burgerLineHeight}) * 3) / 2);
+$burgerTransitionTime: var(
+  --solid-saas-navbar__burgerTransitionTime,
+  #{$baseTransitionTime}
+);
+
+// component
+
+.sha3-navbar {
+  width: 100%;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  &__column {
+    display: flex;
+    align-items: center;
+  }
+  &__logo {
+    position: relative;
+    z-index: 2;
+  }
+  &__menu {
+    background-color: var(--color--whiteTransparent);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity ease-in-out $baseTransitionTime,
+      transform ease-in-out $baseTransitionTime;
+    display: flex;
+    position: fixed;
+    justify-content: flex-end;
+    align-items: flex-start;
+    left: 0;
+    top: 0;
+    flex-direction: column;
+    width: 100%;
+    z-index: 1;
+    padding: 2em 1em;
+    padding-top: 5em;
+    box-sizing: border-box;
+    & > * {
+      margin: 0.75em;
+    }
+    @include sha3.media(l) {
+      padding: 0;
+      background: none;
+      pointer-events: initial;
+      transform: none;
+      opacity: 1;
+      align-items: center;
+      position: initial;
+      display: flex;
+      flex-direction: row;
+      & > * {
+        margin: 0 1em;
+      }
+    }
+  }
+  &__ctas {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    & > * {
+      margin: 0 1em;
+      white-space: nowrap;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &__burger {
+    display: block;
+    cursor: pointer;
+    width: $burgerSize;
+    height: $burgerSize;
+    position: relative;
+    margin-left: 1em;
+    z-index: 2;
+    @include sha3.media(l) {
+      display: none !important;
+    }
+  }
+  &__burgerIconContainer {
+    position: absolute;
+    top: calc(50% - #{$burgerLineHeight/2});
+  }
+  &__icon {
+    width: $burgerSize;
+    height: $burgerLineHeight;
+    background: $burgerColor;
+    transition: $burgerTransitionTime;
+    &:before {
+      top: calc(-1 * $burgerPadding);
+    }
+    &:after {
+      top: $burgerPadding;
+    }
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      width: $burgerSize;
+      height: $burgerLineHeight;
+      background: $burgerColor;
+      transition: $burgerTransitionTime;
+    }
+  }
+  &[data-isopen="true"] & {
+    &__menu {
+      pointer-events: initial;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    &__icon {
+      background: transparent;
+      &:before {
+        top: 0;
+        transform: rotate(135deg);
+      }
+      &:after {
+        top: 0;
+        transform: rotate(225deg);
+      }
+    }
+  }
+}

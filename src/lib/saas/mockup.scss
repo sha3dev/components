@@ -1,0 +1,79 @@
+// imports
+
+@use "@sha3dev/styles" as sha3dev;
+
+// vars
+
+$desktopMockupImage: var(--sha3-mockup__desktopMockupImage);
+$mobileMockupImage: var(--sha3-mockup__mobileMockupImage);
+$desktopImage: var(--sha3-mockup__desktopImage);
+$mobileImage: var(--sha3-mockup__mobileImage);
+
+// component
+
+.sha3-mockup {
+  &__container {
+    position: relative;
+  }
+  &__mockup {
+    position: relative;
+    &--mobile {
+      position: absolute;
+      width: 25%;
+      aspect-ratio: 1/2;
+      right: -3%;
+      top: 25%;
+      z-index: 1;
+    }
+  }
+  &__placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #fff;
+    margin: 0 auto;
+    & > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+    &--desktop {
+      padding: 5% 10%;
+      top: 1%;
+      left: 12%;
+      width: 76%;
+      height: 90%;
+      & > img {
+        content: $desktopImage;
+      }
+    }
+    &--mobile {
+      padding: 10% 8%;
+      top: 3%;
+      left: 8%;
+      width: 86%;
+      height: 91%;
+      border-radius: 10%;
+      & > img {
+        content: $mobileImage;
+      }
+    }
+  }
+  &__device {
+    position: relative;
+    &--desktop {
+      width: 100%;
+      content: $desktopMockupImage;
+    }
+    &--mobile {
+      filter: invert(0.05);
+      height: 100%;
+      content: $mobileMockupImage;
+    }
+  }
+}
