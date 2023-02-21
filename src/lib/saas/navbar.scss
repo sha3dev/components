@@ -5,12 +5,13 @@
 // vars
 
 $baseTransitionTime: 0.25s;
-$burgerColor: var(--solid-saas-navbar__burgerColor, #000);
-$burgerSize: var(--solid-saas-navbar__burgerSize, 16px);
-$burgerLineHeight: var(--solid-saas-navbar__burgerLineHeight, 2px);
+$burgerColor: var(--sha3-navbar__burgerColor, #000);
+$burgerSize: var(--sha3-navbar__burgerSize, 16px);
+$burgerLineHeight: var(--sha3-navbar__burgerLineHeight, 2px);
 $burgerPadding: calc((#{$burgerSize} - (#{$burgerLineHeight}) * 3) / 2);
+$menuBackgroundColor: var(--color--whiteTransparent, rgba(255, 255, 255, 0.95));
 $burgerTransitionTime: var(
-  --solid-saas-navbar__burgerTransitionTime,
+  --sha3-navbar__burgerTransitionTime,
   #{$baseTransitionTime}
 );
 
@@ -33,7 +34,7 @@ $burgerTransitionTime: var(
     z-index: 2;
   }
   &__menu {
-    background-color: var(--color--whiteTransparent);
+    background-color: $menuBackgroundColor;
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
