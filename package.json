@@ -7,13 +7,9 @@
     "lint": "eslint 'src/**'"
   },
   "devDependencies": {
-    "@sha3dev/eslint-config-custom": "*",
-    "@sha3dev/styles": "^0.0.0",
-    "eslint": "^8.34.0",
-    "eslint-plugin-react": "^7.32.2"
+    "@sha3dev/eslint-config-custom": "*"
   },
   "peerDependencies": {
-    "react": ">=18.2.0",
-    "react-dom": ">=18.2.0"
+    "solid-js": "*"
   }
 }

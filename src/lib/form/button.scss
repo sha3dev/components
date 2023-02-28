@@ -1,0 +1,22 @@
+.sha3-button {
+  width: 100%;
+  & > button {
+    width: 100%;
+    padding: var(--padding--input);
+    &:not([disabled]) {
+      cursor: pointer;
+    }
+  }
+  &[data-format="link"] {
+    width: initial;
+    & > button {
+      padding: 0;
+      background-color: transparent;
+      border: 0;
+      text-align: left;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.sha3-input {
+  width: 100%;
+  & > input {
+    background-color: var(--color--inputBackground);
+    border: 1px solid var(--color--border);
+    padding: var(--padding--input);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &__error {
+    color: var(--color--error);
+    padding: 0.5rem 0;
+    &:empty {
+      display: none;
+    }
+  }
+  &[data-error="true"] {
+    & > input {
+      border-color: var(--color--error);
+    }
+  }
+}
