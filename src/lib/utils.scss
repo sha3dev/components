@@ -1,0 +1,9 @@
+@mixin invisibleScroll {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}

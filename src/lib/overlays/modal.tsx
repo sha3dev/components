@@ -22,7 +22,7 @@ export type Props = {
  * component
  */
 
-export default function Button(props: Props) {
+export default function Modal(props: Props) {
   /**
    * refs
    */

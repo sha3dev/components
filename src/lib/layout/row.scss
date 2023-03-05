@@ -1,0 +1,88 @@
+@import "@sha3dev/styles";
+
+.sha3-row {
+  position: relative;
+  &__content {
+    @include invisibleScroll();
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0 1.5em;
+    scroll-padding: 0 1.5em;
+  }
+  &__items {
+    display: flex;
+    white-space: nowrap;
+    grid-auto-flow: column;
+    justify-content: flex-start;
+    &:after {
+      content: "";
+      width: 1px;
+    }
+  }
+  &__item {
+    @include noSelect();
+    position: relative;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    scroll-snap-align: start;
+    margin-right: 1em;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &__arrow {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: none;
+    height: 2em;
+    width: 2em;
+    justify-content: center;
+    align-items: center;
+    line-height: 0;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 50%;
+    background-color: var(--color--background);
+    & > svg {
+      height: 1em;
+      width: 1em;
+    }
+    &:hover,
+    &:focus {
+      filter: invert(1);
+      & > svg {
+        opacity: 1;
+      }
+    }
+    &[data-move="prev"] {
+      left: 0.5em;
+    }
+    &[data-move="next"] {
+      left: initial;
+      right: 0.5em;
+    }
+  }
+  &[data-touch="false"][data-overflow] {
+    .sha3-row__arrow {
+      display: block;
+      cursor: pointer;
+    }
+    &[data-overflow="right"] {
+      [data-move="prev"] {
+        display: none;
+      }
+    }
+    &[data-overflow="left"] {
+      [data-move="next"] {
+        display: none;
+      }
+    }
+  }
+}

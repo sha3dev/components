@@ -10,6 +10,11 @@
     "@sha3dev/eslint-config-custom": "*"
   },
   "peerDependencies": {
+    "@solidjs/router": "*",
     "solid-js": "*"
+  },
+  "dependencies": {
+    "@sha3dev/styles": "^0.0.0",
+    "solid-icons": "^1.0.4"
   }
 }
