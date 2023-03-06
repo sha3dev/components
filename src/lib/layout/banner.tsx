@@ -2,7 +2,6 @@
  * imports
  */
 
-import { Dynamic } from "solid-js/web";
 import { Link } from "@solidjs/router";
 import { For, Show } from "solid-js";
 import "./banner.scss";
@@ -66,7 +65,7 @@ export default function Banner(props: Props) {
             <For each={props.texts}>
               {(text, index) => (
                 <div data-index={index} class="sha3-banner__text">
-                  {text}
+                  <span>{text}</span>
                 </div>
               )}
             </For>

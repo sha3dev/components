@@ -1,18 +1,47 @@
+@import "@sha3dev/styles";
+
 .sha3-banner {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 2/1;
+  max-height: 33vh;
   position: relative;
+  background-color: var(--color--border);
   &__backgroundImage {
-    object-fit: cover;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    @include fullSize();
+    .sha3-lazyImage {
+      height: 100%;
+    }
+    & > img {
+      @include fullSize();
+      object-fit: cover;
+    }
   }
-  &__text {
+  &__texts {
+    @include fullSize();
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    box-sizing: border-box;
     &:empty {
       display: none;
+    }
+  }
+  &__text {
+    margin: 0.25em 0;
+    border-radius: 5px;
+    padding: 0 0.25em;
+    &:first-child {
+      font-size: 0.8em;
+    }
+    span {
+      padding: 0.25em;
+      line-height: 1.9;
+      @include glass(#fff);
+      box-decoration-break: clone;
     }
   }
 }

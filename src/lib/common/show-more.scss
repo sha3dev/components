@@ -1,0 +1,21 @@
+.sha3-showMore {
+  &__content {
+    max-height: 3em;
+    overflow: hidden;
+  }
+  &__footer {
+    display: none;
+  }
+  &[data-isopen="true"] {
+    .sha3-showMore__content {
+      max-height: initial;
+    }
+  }
+  &[data-isoverflow="true"] {
+    &[data-isopen="false"] {
+      .sha3-showMore__footer {
+        display: block;
+      }
+    }
+  }
+}

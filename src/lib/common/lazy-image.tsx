@@ -4,7 +4,7 @@
  * imports
  */
 
-import { onMount } from "solid-js";
+import { createSignal, JSXElement, onMount, Show } from "solid-js";
 import "./lazy-image.scss";
 
 /**
@@ -26,6 +26,7 @@ declare const window: Window & {
 export type LazyImageProps = {
   src: string;
   priority?: boolean;
+  fallback?: JSXElement;
 };
 
 /**
@@ -46,6 +47,8 @@ export default function LazyImage(props: LazyImageProps) {
   /**
    * signals
    */
+
+  const [isLoaded, setIsLoaded] = createSignal(props.priority);
 
   /**
    * private: methods
@@ -102,6 +105,9 @@ export default function LazyImage(props: LazyImageProps) {
   return (
     <div ref={$!} class="sha3-lazyImage">
       <img data-src={!props.priority ? props.src : undefined} src={props.priority ? props.src : undefined} />
+      <Show when={props.fallback && !isLoaded()}>
+        <div class="sha3-lazyImage__fallback">{props.fallback}</div>
+      </Show>
     </div>
   );
 }

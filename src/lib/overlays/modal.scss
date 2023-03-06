@@ -21,9 +21,24 @@
     background-color: var(--color);
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
   }
   &__closeIcon {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    & > svg {
+      height: 1.66em;
+      width: 1.66em;
+    }
+    &:hover {
+      opacity: 0.66;
+    }
+    &:active {
+      transform: scale(0.95);
+    }
   }
   &__body {
     padding: 0.5em 1em;

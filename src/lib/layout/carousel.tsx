@@ -16,6 +16,13 @@ export type Props = {
 };
 
 /**
+ * consts
+ */
+
+const IS_TOUCH_DEVICE =
+  "ontouchstart" in window || navigator.maxTouchPoints > 0 || (navigator as any).msMaxTouchPoints > 0;
+
+/**
  * component
  */
 
@@ -91,24 +98,26 @@ export default function Carousel(props: Props) {
             </For>
           </ol>
         </Show>
-        <div class="sha3-carousel__arrows">
-          <button
-            class="sha3-carousel__arrow"
-            data-move="prev"
-            onClick={() => move(-1)}
-            data-disabled={currentSlide() === 0}
-          >
-            <FaSolidAngleLeft />
-          </button>
-          <button
-            class="sha3-carousel__arrow"
-            data-move="next"
-            onClick={() => move(1)}
-            data-disabled={currentSlide() === childrenArray.length - 1}
-          >
-            <FaSolidAngleRight />
-          </button>
-        </div>
+        <Show when={!IS_TOUCH_DEVICE}>
+          <div class="sha3-carousel__arrows">
+            <button
+              class="sha3-carousel__arrow"
+              data-move="prev"
+              onClick={() => move(-1)}
+              data-disabled={currentSlide() === 0}
+            >
+              <FaSolidAngleLeft />
+            </button>
+            <button
+              class="sha3-carousel__arrow"
+              data-move="next"
+              onClick={() => move(1)}
+              data-disabled={currentSlide() === childrenArray.length - 1}
+            >
+              <FaSolidAngleRight />
+            </button>
+          </div>
+        </Show>
       </Show>
     </div>
   );
